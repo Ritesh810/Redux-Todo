@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo, useCallback, Suspense } from 'react';
+import React, { useState, useEffect, useMemo, useCallback, lazy, Suspense } from 'react';
 import {
   ThemeProvider,
   createTheme,
@@ -607,7 +607,7 @@ const ProductCard = React.memo(({ product, index, onAddToCart, onToggleFavorite,
 });
 
 function App() {
-  // State management with lazy initialization
+  // Optimized state management with lazy initialization
   const [user, setUser] = useState(() => {
     try {
       return JSON.parse(localStorage.getItem('user')) || null;
@@ -665,6 +665,31 @@ function App() {
     email: '',
     password: '',
   });
+  
+  const [registerForm, setRegisterForm] = useState({
+    name: '',
+    email: '',
+    password: '',
+    confirmPassword: '',
+  });
+  
+  const [shippingInfo, setShippingInfo] = useState({
+    fullName: '',
+    address: '',
+    city: '',
+    pincode: '',
+    phone: '',
+  });
+  
+  const [cardInfo, setCardInfo] = useState({
+    cardNumber: '',
+    cardName: '',
+    expiryDate: '',
+    cvv: '',
+  });
+  
+  const [paymentMethod, setPaymentMethod] = useState('card');
+  const [activeStep, setActiveStep] = useState(0);
 
   // Categories
   const categories = [
