@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script type="text/javascript">
+        const user = [
+    { fname : 'john', lname : 'doe', age : 30 },
+    { fname : 'jane', lname : 'doe', age : 35 },
+    { fname : 'jim', lname : 'beam', age : 40  },
+    { fname : 'jill', lname : 'valentine', age : 28  },
+    { fname : 'jack', lname : 'daniels', age : 30 },
+]
+
+const output = user.map((user) => user.fname + " " + user.lname )
+console.log(output);
+
+const output2 = user.reduce((acc, curr) => {
+    if(acc[curr.age]){
+        acc[curr.age] = ++acc[curr.age];
+    }else {
+        acc[curr.age] = 1;
+    }
+    return acc;
+}, {});
+console.log(output2);
+
+    </script>
+</body>
+</html>
+
+
